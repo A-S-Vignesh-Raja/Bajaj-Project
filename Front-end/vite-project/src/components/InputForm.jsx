@@ -10,7 +10,7 @@ function InputForm({ setResponseData }) {
     try {
       setError('');
       const parsedData = JSON.parse(inputData);
-      const response = await axios.post('http://localhost:3000/bfhl', parsedData);
+      const response = await axios.post('https://localhost:3000/bfhl', parsedData);
       setResponseData(response.data);
     } catch (err) {
       setError('Invalid JSON input or request failed.');
