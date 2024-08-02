@@ -11,7 +11,7 @@ function InputForm({ setResponseData }) {
     try {
       setError('');
       const parsedData = JSON.parse(inputData);
-      const response = await axios.post('https://bajaj-82iv.onrender.com/bfhl', parsedData);
+      const response = await axios.post('https://bajaj-project-g09x.onrender.com/bfhl', parsedData);
       setResponseData(response.data);
     } catch (err) {
       setError('Invalid JSON input or request failed.');
