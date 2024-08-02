@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/bfhl': {
-        target: 'https://localhost:3000',
+        target: 'https://localhost:5000',
         changeOrigin: true,
         secure: false,
       },

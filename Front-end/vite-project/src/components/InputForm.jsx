@@ -1,5 +1,6 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import './InputForm.css'; // Make sure to import the new CSS file
 
 function InputForm({ setResponseData }) {
   
@@ -10,7 +11,7 @@ function InputForm({ setResponseData }) {
     try {
       setError('');
       const parsedData = JSON.parse(inputData);
-      const response = await axios.post('https://localhost:3000/bfhl', parsedData);
+      const response = await axios.post('http://localhost:5000/bfhl', parsedData);
       setResponseData(response.data);
     } catch (err) {
       setError('Invalid JSON input or request failed.');
@@ -18,21 +19,21 @@ function InputForm({ setResponseData }) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <div className="input-form-container">
       <textarea
-        className="w-full p-2 border border-gray-300 rounded"
+        className="input-textarea"
         rows="5"
         value={inputData}
         onChange={(e) => setInputData(e.target.value)}
         placeholder='{"data": ["A", "B", "1"]}'
       />
       <button
-        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        className="submit-button"
         onClick={handleSubmit}
       >
         Submit
       </button>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }
